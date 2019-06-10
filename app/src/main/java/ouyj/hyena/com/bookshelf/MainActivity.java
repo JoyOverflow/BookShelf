@@ -2,6 +2,9 @@ package ouyj.hyena.com.bookshelf;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private DataGrid bookShelf;
     private ShelfAdapter adapter;
     private List<BookList> bookLists;
+    private final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
         bookShelf= findViewById(R.id.bookShelf);
         adapter = new ShelfAdapter(MainActivity.this,bookLists);
         bookShelf.setAdapter(adapter);
+
+
+        bookShelf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG,"onItemClick！");
+            }
+        });
     }
 
 
