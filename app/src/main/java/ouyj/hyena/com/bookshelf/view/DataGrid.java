@@ -74,7 +74,8 @@ public class DataGrid extends GridView implements View.OnClickListener{
         //项视图数
         int count = getChildCount();
         //Log.d(TAG,"dispatchDraw ："+count);
-        int backgroundHeightPanding = (int) convertDpToPixel(mcontext,4);
+        //int backgroundHeightPanding = (int) convertDpToPixel(mcontext,4);
+        int backgroundHeightPanding = (int) convertDpToPixel(mcontext,8);
         int dockHightPanding = (int) convertDpToPixel(mcontext,3);
 
 
@@ -85,8 +86,9 @@ public class DataGrid extends GridView implements View.OnClickListener{
         int backgroundWidth = background.getWidth();
         int backgroundHeight = background.getHeight()-backgroundHeightPanding;
 
-
         int top = count > 0 ? getChildAt(0).getTop() : 0;
+
+        //画书柜
         for (int y = top; y < height; y += backgroundHeight) {
             for (int x = 0; x < width; x += backgroundWidth) {
                 canvas.drawBitmap(background, x, y, null);
@@ -109,7 +111,7 @@ public class DataGrid extends GridView implements View.OnClickListener{
             firstTextView.getLocationInWindow(location);
         }
 
-        //调用基类的绘制（注需先绘制以上的书柜背景）
+        //调用基类来绘制书本（注需先绘制以上的书柜背景）
         super.dispatchDraw(canvas);
     }
     public float convertDpToPixel(final Context context, final float dp) {

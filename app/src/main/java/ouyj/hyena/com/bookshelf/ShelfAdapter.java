@@ -17,14 +17,14 @@ public class ShelfAdapter extends BaseAdapter {
 
     //上下文对象和数据源
     private Context context;
-    private List<BookList> list;
+    private List<Book> list;
 
     /**
      * 构造方法
      * @param context
      * @param list
      */
-    public ShelfAdapter(Context context, List<BookList> list){
+    public ShelfAdapter(Context context, List<Book> list){
         this.context = context;
         this.list = list;
     }
@@ -73,9 +73,21 @@ public class ShelfAdapter extends BaseAdapter {
         else
             viewHolder = (ViewHolder) convertView.getTag();
 
-        //设置项内视图的文本
-        String bookName = list.get(position).getName();
-        viewHolder.name.setText(bookName);
+
+        Book book=list.get(position);
+        if(book.getPicture()>0){
+            int pid=list.get(position).getPicture();
+            viewHolder.name.setBackgroundResource(pid);
+
+            //设置控件的drawable(Left/Right/Top/Bottom)
+            viewHolder.name.setCompoundDrawables(null, null, null, null);
+        }
+        else{
+            //设置项内视图的文本
+            String bookName = book.getName();
+            viewHolder.name.setText(bookName);
+        }
+
 
         return convertView;
     }

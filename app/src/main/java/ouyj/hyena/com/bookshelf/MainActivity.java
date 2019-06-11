@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DataGrid bookShelf;
     private ShelfAdapter adapter;
-    private List<BookList> bookLists;
+    private List<Book> bookList;
     private final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -23,17 +23,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bookLists = new ArrayList<>();
+        bookList = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            BookList tmp = new BookList(i,String.format("我的第%d本书", i));
-            bookLists.add(tmp);
+            Book tmp = new Book(i,String.format("我的第%d本书", i));
+            bookList.add(tmp);
         }
+        bookList.get(0).setPicture(R.drawable.dinosaur);
+        bookList.get(1).setPicture(R.drawable.seabed);
+        bookList.get(2).setPicture(R.drawable.alice);
+        bookList.get(3).setPicture(R.drawable.magiccube);
 
         //为书柜视图设置适配器
         bookShelf= findViewById(R.id.bookShelf);
-        adapter = new ShelfAdapter(MainActivity.this,bookLists);
+        adapter = new ShelfAdapter(MainActivity.this, bookList);
         bookShelf.setAdapter(adapter);
-
 
         bookShelf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
