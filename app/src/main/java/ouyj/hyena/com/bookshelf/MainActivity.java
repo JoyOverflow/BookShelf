@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ShelfAdapter(MainActivity.this, bookList);
         bookShelf.setAdapter(adapter);
 
+        //为书柜视图设置项点击事件处理
         bookShelf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
