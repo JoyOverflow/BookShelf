@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">书柜演示</string>
+    <string name="press_twice_to_exit">快速连续点击二次才能退出</string>
 </resources>
