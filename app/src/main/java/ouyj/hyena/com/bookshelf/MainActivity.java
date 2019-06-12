@@ -33,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
             Book tmp = new Book(i,String.format("我的第%d本书", i));
             bookList.add(tmp);
         }
-        bookList.get(0).setPicture(R.drawable.dinosaur);
-        bookList.get(0).setCodePath("dinosaur");
-        bookList.get(1).setPicture(R.drawable.seabed);
-        bookList.get(2).setPicture(R.drawable.alice);
-        bookList.get(3).setPicture(R.drawable.magiccube);
+
+
+        bookList.get(0).setPicture(R.drawable.goose);
+        bookList.get(0).setCodePath("goose");
+        bookList.get(1).setPicture(R.drawable.dinosaur);
+        bookList.get(2).setPicture(R.drawable.seabed);
+        bookList.get(3).setPicture(R.drawable.alice);
+        bookList.get(4).setPicture(R.drawable.magiccube);
 
         //为书柜视图设置适配器
         bookShelf= findViewById(R.id.bookShelf);
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
     private void exitApplication() {
-        Timer tExit;
+        Timer timer;
         if (!allowExit) {
             allowExit = true;
 
@@ -86,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT
             ).show();
 
-            tExit = new Timer();
-            tExit.schedule(new TimerTask() {
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     allowExit = false;
